@@ -4,114 +4,124 @@ import Link from 'next/link';
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* Hero Section */}
-      <section className="px-6 py-24 md:px-12 lg:px-24">
+      {/* Main Content */}
+      <main className="px-6 md:px-12 lg:px-24 py-32">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+          
+          {/* Grid principale a 2 colonne */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
             
-            {/* Blocco 1 - SX */}
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight tracking-tight">
+            {/* Colonna SINISTRA - Blocco 1 */}
+            <div className="lg:sticky lg:top-32 lg:self-start">
+              <div className="mb-8 lg:mb-12">
+                <span className="text-sm text-gray-500 font-light tracking-wider">STUDIO HYLE</span>
+              </div>
+              
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-light leading-[0.95] tracking-tight">
                 Sviluppiamo sistemi decisionali per contesti complessi.
               </h1>
             </div>
 
-            {/* Colonna DX con blocchi 2 e 3 */}
-            <div className="space-y-16 lg:space-y-24">
+            {/* Colonna DESTRA - Blocchi 2 e 3 */}
+            <div className="space-y-32">
               
-              {/* Blocco 2 */}
-              <div className="space-y-4">
-                <p className="text-xl md:text-2xl text-gray-300">
-                  Siamo uno studio dinamico.
-                </p>
-                <p className="text-xl md:text-2xl text-gray-300">
-                  Progettiamo sistemi orientati all&apos;equilibrio, capaci di adattarsi alla tua realtà.
-                </p>
-              </div>
-
-              {/* Blocco 3 */}
-              <div className="space-y-6">
-                <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                  Per creare qualcosa di davvero efficace, dobbiamo capire a fondo cosa vuoi realizzare.
-                </p>
-                <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                  Solo così possiamo proporti soluzioni sorprendenti, costruite su misura.
-                </p>
-                <div className="pt-4 space-y-4">
-                  <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                    HYLE sviluppa sistemi decisionali per persone e aziende che vogliono fare le cose meglio.
+              {/* Blocco 2 - SX nella colonna DX (come nell'immagine) */}
+              <div className="max-w-2xl">
+                <div className="space-y-4">
+                  <p className="text-2xl md:text-3xl font-light leading-snug text-gray-300">
+                    Siamo uno studio dinamico.
                   </p>
-                  <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-                    Lavoriamo con te, passo dopo passo, per costruire un&apos;esperienza unica.
+                  <p className="text-2xl md:text-3xl font-light leading-snug text-gray-300">
+                    Progettiamo sistemi orientati all&apos;equilibrio, capaci di adattarsi alla tua realtà.
                   </p>
                 </div>
-                <div className="pt-8">
-                  <Link 
-                    href="/servizi" 
-                    className="inline-flex items-center text-lg font-medium hover:text-gray-300 transition-colors border-b border-transparent hover:border-gray-300 pb-1"
-                  >
-                    Scopri come lavoriamo
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+              </div>
+
+              {/* Blocco 3 - DX nella colonna DX */}
+              <div className="max-w-2xl ml-auto">
+                <div className="space-y-8">
+                  <div className="space-y-6">
+                    <p className="text-xl md:text-2xl font-light leading-relaxed text-gray-300">
+                      Per creare qualcosa di davvero efficace, dobbiamo capire a fondo cosa vuoi realizzare.
+                    </p>
+                    <p className="text-xl md:text-2xl font-light leading-relaxed text-gray-300">
+                      Solo così possiamo proporti soluzioni sorprendenti, costruite su misura.
+                    </p>
+                  </div>
+                  
+                  <div className="pt-6 border-t border-gray-800 space-y-4">
+                    <p className="text-lg md:text-xl font-light leading-relaxed text-gray-400">
+                      HYLE sviluppa sistemi decisionali per persone e aziende che vogliono fare le cose meglio.
+                    </p>
+                    <p className="text-lg md:text-xl font-light leading-relaxed text-gray-400">
+                      Lavoriamo con te, passo dopo passo, per costruire un&apos;esperienza unica.
+                    </p>
+                  </div>
+                  
+                  <div className="pt-8">
+                    <Link 
+                      href="/servizi" 
+                      className="inline-flex items-center gap-2 text-lg font-light hover:text-gray-300 transition-colors group"
+                    >
+                      <span className="border-b border-transparent group-hover:border-gray-300 pb-1">
+                        Esplora i nostri servizi
+                      </span>
+                      <svg 
+                        className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
               </div>
 
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Preview Progetti */}
-      <section className="px-6 py-24 md:px-12 lg:px-24 bg-gray-950/50">
+        </div>
+      </main>
+
+      {/* Footer Preview */}
+      <footer className="px-6 md:px-12 lg:px-24 py-12 border-t border-gray-800">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8 mb-16">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-light mb-4">Mini-casi operativi</h2>
-              <p className="text-gray-400 text-lg max-w-2xl">
-                Contesti diversi, problemi diversi. Stesso approccio HYLE.
-              </p>
-            </div>
-            <Link 
-              href="/progetti" 
-              className="text-lg font-medium hover:text-gray-300 transition-colors border-b border-transparent hover:border-gray-300 pb-1"
-            >
-              Vedi tutti i progetti
-            </Link>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              { title: "Sistema per gestire un cane", category: "Personale" },
-              { title: "Sistema per gestire una libreria personale", category: "Organizzazione" },
-              { title: "Sistema per andare in montagna", category: "Avventura" },
-              { title: "Sistema per la gestione di una PMI impiantistica", category: "Aziendale" },
-              { title: "Sistema personale di gestione del tempo", category: "Produttività" },
-              { title: "Sistema di apprendimento continuo", category: "Crescita" },
-            ].map((project, index) => (
-              <div 
-                key={index} 
-                className="group border border-gray-800 hover:border-gray-600 transition-colors p-6 rounded-lg"
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+            <div className="space-y-2">
+              <span className="text-sm text-gray-500 font-light tracking-wider">CONTATTO</span>
+              <a 
+                href="mailto:info@hyle.studio" 
+                className="text-xl font-light hover:text-gray-300 transition-colors block"
               >
-                <span className="text-sm text-gray-500 mb-2 block">{project.category}</span>
-                <h3 className="text-xl font-light mb-4 group-hover:text-gray-300 transition-colors">
-                  {project.title}
-                </h3>
-                <Link 
-                  href="/progetti" 
-                  className="text-gray-500 hover:text-gray-300 transition-colors text-sm font-medium inline-flex items-center"
-                >
-                  Scopri l&apos;approccio
-                  <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
-            ))}
+                info@hyle.studio
+              </a>
+            </div>
+            
+            <div className="flex gap-8">
+              <Link 
+                href="/servizi" 
+                className="text-lg font-light hover:text-gray-300 transition-colors"
+              >
+                Servizi
+              </Link>
+              <Link 
+                href="/progetti" 
+                className="text-lg font-light hover:text-gray-300 transition-colors"
+              >
+                Progetti
+              </Link>
+              <Link 
+                href="/about" 
+                className="text-lg font-light hover:text-gray-300 transition-colors"
+              >
+                Evoluzione
+              </Link>
+            </div>
           </div>
         </div>
-      </section>
+      </footer>
     </div>
   );
 }

@@ -1,0 +1,93 @@
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
+
+export default function HomePage() {
+  return (
+    <>
+      <Navigation />
+      
+      <main className="min-h-screen">
+        {/* Hero Section */}
+        <section className="bg-gradient-to-r from-blue-600 to-indigo-800 text-white py-24 px-6 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+              Benvenuto nel tuo sito
+            </h1>
+            <p className="text-xl md:text-2xl mb-10 opacity-90">
+              Moderno, veloce e costruito passo dopo passo
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center">
+              <a
+                href="/contact"
+                className="bg-white text-blue-700 font-bold py-4 px-8 rounded-lg hover:bg-gray-100 transition text-lg"
+              >
+                Inizia ora
+              </a>
+              <a
+                href="/about"
+                className="bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-lg hover:bg-white/10 transition text-lg"
+              >
+                Scopri di più
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Sezione Servizi */}
+        <section className="py-20 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
+              Cosa troverai qui
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                <div className="text-blue-600 text-4xl mb-6">🚀</div>
+                <h3 className="text-xl font-bold mb-4">Performance</h3>
+                <p className="text-gray-700">
+                  Sito ottimizzato per caricamento rapido su tutti i dispositivi.
+                </p>
+              </div>
+              
+              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                <div className="text-blue-600 text-4xl mb-6">🎨</div>
+                <h3 className="text-xl font-bold mb-4">Design Responsive</h3>
+                <p className="text-gray-700">
+                  Si adatta a smartphone, tablet e desktop grazie a Tailwind CSS.
+                </p>
+              </div>
+              
+              <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                <div className="text-blue-600 text-4xl mb-6">⚙️</div>
+                <h3 className="text-xl font-bold mb-4">Facile da Modificare</h3>
+                <p className="text-gray-700">
+                  Cambia colori, testi e layout in pochi minuti.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Sezione Call-to-Action */}
+        <section className="bg-gray-100 py-20 px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">
+              Pronto a personalizzare?
+            </h2>
+            <p className="text-xl text-gray-700 mb-10">
+              Questa è solo la base. Aggiungi le tue sezioni e contenuti.
+            </p>
+            <a
+              href="/contact"
+              className="inline-block bg-blue-700 text-white font-bold py-4 px-10 rounded-lg hover:bg-blue-800 transition text-lg shadow-md"
+            >
+              Contattami per aiuto
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
+}

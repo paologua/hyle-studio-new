@@ -1,83 +1,127 @@
-'use client'
+// components/Navigation.tsx
+'use client';
 
-import { useState } from 'react'
-import Link from 'next/link'
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
 
-const Navigation = () => {
-  const [isOpen, setIsOpen] = useState(false)
+const navigationItems = [
+  { name: 'Home', path: '/' },
+  { name: 'Servizi', path: '/servizi' },
+  { name: 'Progetti', path: '/progetti' },
+  { name: 'Evoluzione', path: '/about' },
+];
 
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Servizi', href: '/servizi' },
-    { name: 'Progetti', href: '/progetti' },
-    { name: 'About', href: '/about' },
-  ]
+export default function Navigation() {
+  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="text-xl font-light tracking-wider hover:text-gray-300 transition-colors">
+    <>
+      {/* Desktop Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 md:px-12 lg:px-24 py-6 md:py-8 bg-black/80 backdrop-blur-sm border-b border-gray-800 hidden md:block">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          {/* Logo/Home */}
+          <Link 
+            href="/" 
+            className="text-lg font-light tracking-wider hover:text-gray-300 transition-colors"
+          >
             HYLE
           </Link>
 
-          {/* Desktop Menu - Nascondi su mobile */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-gray-400 hover:text-white transition-colors text-sm tracking-wide"
-              >
-                {item.name}
-              </Link>
-            ))}
-            <Link
-              href="/#contact"
-              className="px-4 py-2 border border-gray-600 text-sm hover:border-white hover:text-white transition-colors"
-            >
-              Contattaci
-            </Link>
-          </div>
-
-          {/* Mobile Menu Button - Mostra solo su mobile */}
-          <button
-            className="md:hidden text-gray-400 hover:text-white"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label="Menu"
-          >
-            <span className="text-xl">{isOpen ? '✕' : '☰'}</span>
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-800 pt-4">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
+          {/* Navigation Links - Centered */}
+          <div className="flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+            {navigationItems.map((item) => {
+              const isActive = pathname === item.path;
+              return (
                 <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-gray-400 hover:text-white transition-colors py-2 text-lg"
-                  onClick={() => setIsOpen(false)}
+                  key={item.path}
+                  href={item.path}
+                  className={`text-sm font-light tracking-wider transition-colors ${
+                    isActive
+                      ? 'text-white'
+                      : 'text-gray-500 hover:text-gray-300'
+                  }`}
                 >
                   {item.name}
                 </Link>
-              ))}
-              <Link
-                href="/#contact"
-                className="px-4 py-3 border border-gray-600 text-center hover:border-white hover:text-white transition-colors mt-4"
-                onClick={() => setIsOpen(false)}
-              >
-                Contattaci
-              </Link>
+              );
+            })}
+          </div>
+
+          {/* Contact */}
+          <div className="text-right">
+            <a
+              href="mailto:info@hyle.studio"
+              className="text-sm font-light tracking-wider text-gray-500 hover:text-gray-300 transition-colors"
+            >
+              info@hyle.studio
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      {/* Mobile Navigation */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 bg-black/90 backdrop-blur-sm border-b border-gray-800 md:hidden">
+        <div className="flex justify-between items-center">
+          {/* Logo/Home */}
+          <Link 
+            href="/" 
+            className="text-lg font-light tracking-wider hover:text-gray-300 transition-colors"
+          >
+            HYLE
+          </Link>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="text-gray-500 hover:text-white transition-colors p-2"
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-5 relative">
+              <span className={`absolute left-0 w-6 h-px bg-current transition-all duration-300 ${isMenuOpen ? 'top-2 rotate-45' : 'top-0'}`} />
+              <span className={`absolute left-0 w-6 h-px bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0' : 'top-2 opacity-100'}`} />
+              <span className={`absolute left-0 w-6 h-px bg-current transition-all duration-300 ${isMenuOpen ? 'top-2 -rotate-45' : 'top-4'}`} />
+            </div>
+          </button>
+        </div>
+
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 right-0 bg-black border-b border-gray-800">
+            <div className="px-6 py-8 space-y-6">
+              {navigationItems.map((item) => {
+                const isActive = pathname === item.path;
+                return (
+                  <Link
+                    key={item.path}
+                    href={item.path}
+                    onClick={() => setIsMenuOpen(false)}
+                    className={`block text-lg font-light tracking-wider transition-colors ${
+                      isActive
+                        ? 'text-white'
+                        : 'text-gray-500 hover:text-gray-300'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
+              <div className="pt-6 border-t border-gray-800">
+                <a
+                  href="mailto:info@hyle.studio"
+                  className="text-lg font-light tracking-wider text-gray-500 hover:text-gray-300 transition-colors block"
+                >
+                  info@hyle.studio
+                </a>
+              </div>
             </div>
           </div>
         )}
-      </div>
-    </nav>
-  )
-}
+      </nav>
 
-export default Navigation
+      {/* Spacer for fixed nav */}
+      <div className="h-20 md:h-24" />
+    </>
+  );
+}

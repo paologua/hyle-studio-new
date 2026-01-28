@@ -1,3 +1,4 @@
+// tailwind.config.ts - VERSIONE AGGIORNATA
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -9,34 +10,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: '#000000',
-        foreground: '#ffffff',
-        gray: {
-          100: '#f5f5f5',
-          200: '#e5e5e5',
-          300: '#d4d4d4',
-          400: '#a3a3a3',
-          500: '#737373',
-          600: '#525252',
-          700: '#404040',
-          800: '#262626',
-          900: '#171717',
-          950: '#0a0a0a',
-        }
+        background: 'rgb(var(--background-rgb))',
+        foreground: 'rgb(var(--foreground-rgb))',
+      },
+      fontSize: {
+        '10xl': '10rem',
+        '11xl': '12rem',
+        '12xl': '14rem',
+      },
+      lineHeight: {
+        'tight': '0.85',
+        'super-tight': '0.8',
       },
       spacing: {
-        'section': '8rem',
-        'block': '6rem',
+        'vh-10': '10vh',
+        'vh-20': '20vh',
+        'vh-30': '30vh',
+        'screen-90': '90vh',
       },
-      animation: {
-        'fade-in': 'fadeIn 0.8s ease-out',
+      maxWidth: {
+        '8xl': '88rem',
+        '9xl': '96rem',
+        '10xl': '104rem',
       },
-      keyframes: {
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        }
-      }
     },
   },
   plugins: [],

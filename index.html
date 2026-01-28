@@ -3,68 +3,233 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hyle Studio - Deploy Test</title>
+    <title>Hyle Studio - Sito in Sviluppo</title>
+    <meta name="description" content="Nuovo sito Hyle Studio in fase di sviluppo">
+    
+    <!-- DISABILITA CACHE - FORZA SEMPRE VERSIONE AGGIORNATA -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-            text-align: center;
-            padding: 50px;
+        /* RESET COMPLETO - NESSUNO STILE VECCHIO */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html, body {
+            height: 100%;
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            overflow-x: hidden;
+        }
+        
+        .container {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .container {
-            background: rgba(255,255,255,0.1);
-            padding: 40px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            max-width: 600px;
+        
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
         }
-        h1 { font-size: 2.5rem; margin-bottom: 20px; }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
         .status {
             display: inline-block;
-            padding: 10px 20px;
-            background: #10b981;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem 2rem;
             border-radius: 50px;
-            font-weight: bold;
-            margin: 20px 0;
+            margin: 2rem 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        a {
+        
+        .content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+        }
+        
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .link-btn {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             text-decoration: none;
-            border: 2px solid white;
-            padding: 10px 20px;
             border-radius: 10px;
-            display: inline-block;
-            margin: 10px;
-            transition: all 0.3s;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            min-width: 200px;
         }
-        a:hover {
-            background: white;
+        
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+        
+        .link-btn.primary {
+            background: rgba(255, 255, 255, 0.9);
             color: #667eea;
         }
+        
+        .info {
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            width: 100%;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        /* IPAD OPTIMIZATION */
+        @media (max-width: 1024px) {
+            h1 { font-size: 2.5rem; }
+            .logo { font-size: 3.5rem; }
+            .link-btn { min-height: 60px; padding: 1.5rem 2rem; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .logo { font-size: 3rem; }
+            .content { padding: 2rem; }
+            .links { flex-direction: column; }
+            .link-btn { width: 100%; }
+        }
     </style>
+    
+    <!-- SCRIPT ANTI-REDIRECT - BLOCCA QUALSIASI REINDIRIZZAMENTO -->
+    <script>
+        // BLOCCA TUTTI I REINDIRIZZAMENTI
+        window.addEventListener('beforeunload', function(e) {
+            // Non fare nulla - blocca navigazione
+        });
+        
+        // DISABILITA TUTTI I LINK ESTERNI
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.href && !this.href.includes('paologua.github.io/hyle-studio-new')) {
+                        e.preventDefault();
+                        console.log('Link esterno bloccato:', this.href);
+                    }
+                });
+            });
+        });
+        
+        // FORZA CACHE BUSTING
+        if (!window.location.search.includes('v=')) {
+            setTimeout(() => {
+                window.location.href = window.location.pathname + '?v=' + Date.now();
+            }, 100);
+        }
+    </script>
 </head>
 <body>
     <div class="container">
-        <h1>🚀 Hyle Studio</h1>
-        <p>Deploy test su GitHub Pages</p>
-        <div class="status">🟢 CONFIGURAZIONE IN CORSO</div>
+        <div class="logo">🚀</div>
         
-        <p>Se vedi questa pagina, GitHub Pages è configurato correttamente.</p>
+        <h1>Hyle Studio</h1>
         
-        <div style="margin-top: 30px;">
-            <a href="https://www.hylestudio.it" target="_blank">Visita hylestudio.it</a>
-            <a href="https://paologua.github.io/collaborazione-completa" target="_blank">Archivio Collaborazione</a>
+        <div class="status">
+            🟢 NUOVO SITO IN SVILUPPO
         </div>
         
-        <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.8;">
-            URL: paologua.github.io/hyle-studio-new<br>
-            Data: 28 Gennaio 2026
-        </p>
+        <div class="content">
+            <p><strong>Questo è il NUOVO sito Hyle Studio su GitHub Pages.</strong></p>
+            
+            <p>La versione di sviluppo è in corso di aggiornamento. Qui verrà pubblicato il nuovo design.</p>
+            
+            <p>Il sito di produzione principale rimane disponibile all'indirizzo standard.</p>
+            
+            <p><em>Nessun reindirizzamento automatico è attivo su questa pagina.</em></p>
+        </div>
+        
+        <div class="links">
+            <a href="https://www.hylestudio.it" class="link-btn primary" target="_blank" rel="noopener">
+                🌐 Sito Produzione (hylestudio.it)
+            </a>
+            
+            <a href="https://paologua.github.io/collaborazione-completa" class="link-btn" target="_blank" rel="noopener">
+                🧠 Archivio Collaborazione
+            </a>
+            
+            <a href="mailto:info@hylestudio.it" class="link-btn">
+                📧 Contattaci
+            </a>
+        </div>
+        
+        <div class="info">
+            <p><strong>URL attuale:</strong> paologua.github.io/hyle-studio-new</p>
+            <p><strong>Status:</strong> Deploy attivo su GitHub Pages</p>
+            <p><strong>Ultimo aggiornamento:</strong> <span id="current-date"></span></p>
+            <p><strong>Cache:</strong> Disabilitata - Versione sempre aggiornata</p>
+        </div>
     </div>
+    
+    <script>
+        // Aggiorna data corrente
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('it-IT', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+        
+        // Monitora tentativi di redirect
+        window.onbeforeunload = function() {
+            return "Sei sicuro di voler lasciare questa pagina?";
+        };
+        
+        // Log accessi
+        console.log('🔧 Hyle Studio - Nuovo sito GitHub Pages');
+        console.log('📅 Deploy:', new Date().toISOString());
+        console.log('🚫 Reindirizzamenti: DISABILITATI');
+    </script>
 </body>
 </html>
